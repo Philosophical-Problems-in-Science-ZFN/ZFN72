@@ -1,0 +1,1347 @@
+\documentclass[11pt,openany,leqno]{book} % oneside twoside / report book / openany - bibl nie musi rozpoczynać się od nieparzystej
+\usepackage[X2,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+
+\raggedbottom %usuwa przerwy między akapitami, spowodowane przez klasę book
+\frenchspacing %usuwa podwójną przerwę po krpoce (zdaniu)
+
+\usepackage{pdfpages}
+
+
+
+
+
+
+
+
+\usepackage{graphicx}
+%\usepackage{epic}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{bm}	% \boldsymbol
+%\usepackage{amsbsy}	% \boldsymbol
+\usepackage{amscd}	% diagramy
+\usepackage{amsfonts}	% fonty
+\usepackage{amssymb}	% dodatek math
+\usepackage{amstext}	% \text
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{xfrac} %\sfrac{1}{2}
+%\usepackage{nicefrac} %\nicefrac{1}{2}
+\usepackage[normalem]{ulem}
+
+
+
+
+
+\usepackage{longtable}
+\usepackage{tabularx}
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{s}{>{\hsize=.8\hsize}X}
+\renewcommand\arraystretch{1.2}
+\usepackage{float} %umożliwia hard positioning (flaga: H)
+\usepackage{supertabular}
+
+
+\usepackage{array}
+\usepackage{ragged2e}
+
+%\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}m{#1}}
+\newcolumntype{L}[1]{>{\RaggedRight\let\newline\arraybackslash}m{#1}}
+
+\usepackage{adjustbox}
+
+
+
+
+%Equation z marginesami
+\usepackage{environ}
+\makeatletter
+\NewEnviron{widerequation}{%
+	\begin{equation*}
+	\sbox\z@{\let\label\@gobble$\displaystyle\BODY$}
+	\makebox[\textwidth]{%
+		\begin{minipage}{\dimexpr\wd\z@+3em}
+		\vspace{-\baselineskip}
+		\begin{equation*}
+		\BODY
+		\end{equation*}
+		\end{minipage}%
+	}
+	\end{equation*}
+}
+
+
+\usepackage{emptypage}
+
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{multicol}
+
+
+% Different font in captions
+\newcommand{\captionfonts}{\small} %wydaje sie, ze nie dziala
+\usepackage[font={small},singlelinecheck=false]{caption}
+
+
+
+%---------------------------------------------------------
+\usepackage{xcolor}
+\usepackage{stmaryrd} %dla podwójnego nawiasu w mathmode (przypisanie interpretacji formule/zdaniu) \llbracket \rrbracket
+\usepackage{textcomp} %dla podwójnego nawiasu w textmode (przypisanie interpretacji formule/zdaniu) \textlbrackdbl \textrbrackdbl
+\usepackage{tikz-cd}
+\usetikzlibrary{babel}
+%\usetikzlibrary{shapes.geometric}
+\usepackage[title]{appendix}
+
+
+\usepackage[hyphens,spaces,obeyspaces]{url}
+\usepackage{hyperref} %to nowsza wersja pakietu url, lepsza m.in. robie linki hyperref
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black, breaklinks=true, linktocpage}  %to sprawia że nie widać w pdfie aktywnych linków (od GM)
+\urlstyle{rm}
+%\usepackage[hyphens]{url}
+%\PassOptionsToPackage{hyphens}{url}%
+%\RequirePackage[hyphens]{url}
+
+
+
+%--------------------------------------------------------------------------------
+
+
+
+
+\usepackage[russian,polutonikogreek,greek,german,english,polish]{babel}
+\usepackage{textgreek}
+
+\usepackage{geometry}
+\geometry{verbose,paperwidth=145mm,paperheight=205mm,landscape=false,
+twoside,top=25mm,bottom=20mm,left=23mm,right=23mm,headheight=14pt}
+
+%-----spady---------
+%\usepackage[cam,a4,center]{crop}
+%\usepackage[width=151mm,height=211mm,center,cam,noinfo]{crop} % konsultuj z dokumentacją
+\usepackage[width=151mm,height=211mm,center,noinfo]{crop} % bex lini citęcia, konsultuj z dokumentacją
+
+\input{hyphenation}
+
+
+
+
+%\usepackage{paralist}     %odstępy w listach
+%  \let\itemize\compactitem
+%  \let\enditemize\endcompactitem
+%  \let\enumerate\compactenum
+%  \let\endenumerate\endcompactenum
+%  \let\description\compactdesc
+%  \let\enddescription\endcompactdesc
+%  \pltopsep=\medskipamount
+%  \plitemsep=1pt
+%  \plparsep=1pt
+
+\usepackage{enumitem}
+\setlist{noitemsep} % lub \setlist{nosep}
+
+
+%%lamza
+
+\setlistdepth{8}
+\newlist{longitemize}{itemize}{8}
+\setlist[longitemize,1]{label=$\bullet$}
+\setlist[longitemize,2]{label=$\circ$}
+\setlist[longitemize,3]{label=$\ast$}
+\setlist[longitemize,4]{label=$\bullet$}
+\setlist[longitemize,5]{label=$\circ$}
+\setlist[longitemize,6]{label=$\ast$}
+\setlist[longitemize,7]{label=$\bullet$}
+\setlist[longitemize,8]{label=$\bullet$}
+
+\usepackage{scrextend}
+
+%%%%liana
+%\usepackage{mdframed} %sprawdzić, czy gdzieś nie szkodzi
+%\newtheoremstyle{sltheorem}
+%{0pt}                % Space above
+%{1em}                % Space below
+%{\small\mdseries}        % Theorem body font % (default is "\upshape")
+%{}                % Indent amount
+%{\itshape}       % Theorem head font % (default is \mdseries)
+%{.}               % Punctuation after theorem head % default: no punctuation
+%{ }               % Space after theorem head
+%{}                % Theorem head spec
+%\theoremstyle{sltheorem}
+%\newtheorem{uwaga}{Uwaga}
+%\surroundwithmdframed[linewidth=1pt,
+%linecolor=black,
+%bottomline=false,topline=false,rightline=false,
+%innerrightmargin=0pt,innertopmargin=0pt,innerbottommargin=0pt,
+%%outerrightmargin=0pt,outertopmargin=0pt,outerbottommargin=0pt,
+%innerleftmargin=.5em,% Distance between vertical rule & proof content
+%skipabove=1em,splittopskip=0pt,splitbottomskip=0pt%
+%]{uwaga}
+
+
+
+%------------------------- MyriadPro ------------------------------------
+\usepackage{textcomp}
+%\usepackage{Myriad}
+\input{glyphtounicode.tex}
+\pdfgentounicode=1
+\usepackage{inconsolata}
+
+\newcommand{\sansfontype}{\sfdefault}
+%\newcommand{\sansfontype}{sourcesanspro}
+%\newcommand{\sansfontype}{phv}
+
+
+\usepackage[medfamily]{MyriadPro} %zainstalowene przy użyciu FontPro https://github.com/sebschub/FontPro
+
+\newenvironment{namesur}{\fontfamily{\sansfontype}\fontseries{m}\fontshape{it}\fontsize{13}{13}\selectfont}{}
+\newenvironment{chaptitle}{\fontfamily{\sansfontype}\fontseries{eb}\fontshape{n}\fontsize{18}{19}\selectfont}{}
+\newenvironment{chaptitleeng}{\fontfamily{\sansfontype}\fontseries{eb}\fontshape{n}\fontsize{13}{15}\selectfont}{}
+\newenvironment{chapsubtit}{\fontfamily{\sansfontype}\fontseries{b}\fontshape{n}\fontsize{13}{16}\selectfont}{}
+\newenvironment{pagnum}{\fontfamily{\sansfontype}\fontseries{m}\fontshape{n}\fontsize{10}{12}\selectfont}{}
+\newenvironment{sectit}{\fontfamily{\sansfontype}\fontseries{b}\fontshape{n}\fontsize{13}{14}\selectfont}{}
+\newenvironment{subsectit}{\fontfamily{\sansfontype}\fontseries{m}\fontshape{n}\fontsize{12}{14}\selectfont}{}
+\newenvironment{subsubsectit}{\fontfamily{\sansfontype}\fontseries{l}\fontshape{n}\fontsize{12}{14}\selectfont}{}
+\newenvironment{pagname}{\fontfamily{\sansfontype}\fontseries{m}\fontshape{n}\fontsize{9.5}{11.4}\selectfont}{}
+\newenvironment{pagtit}{\fontfamily{\sansfontype}\fontseries{m}\fontshape{it}\fontsize{9.5}{11.4}\selectfont}{}
+\newenvironment{toctit}{\fontfamily{\sansfontype}\fontseries{b}\fontshape{n}\fontsize{16}{16}\selectfont}{}
+\newenvironment{subbold}{\fontfamily{\sansfontype}\fontseries{m}\fontshape{n}\fontsize{12}{14}\selectfont}{}
+\newenvironment{parttitle}{\fontfamily{\sansfontype}\fontseries{eb}\fontshape{n}\fontsize{14}{16}\selectfont}{}
+
+\newenvironment{czw}{\fontfamily{\sansfontype}\fontseries{m}\fontshape{n}\fontsize{10}{12}\selectfont}{}
+\newenvironment{czwccp}{\fontfamily{\sansfontype}\fontseries{m}\fontshape{n}\fontsize{9}{2}\selectfont}{}
+\newenvironment{czwit}{\fontfamily{\sansfontype}\fontseries{m}\fontshape{it}\fontsize{10}{12}\selectfont}{}
+\newenvironment{czwad}{\fontfamily{\sansfontype}\fontseries{eb}\fontshape{n}\fontsize{9.5}{11.4}\selectfont}{}
+
+
+\newenvironment{rectitle}{\fontfamily{\sansfontype}\fontseries{eb}\fontshape{n}\fontsize{16}{15}\selectfont}{}
+\newenvironment{reclight}{\fontfamily{\sansfontype}\fontseries{n}\fontshape{n}\fontsize{12}{14}\selectfont}{}
+\newenvironment{recautor}{\fontfamily{\sansfontype}\fontseries{l}\fontshape{it}\fontsize{11}{13}\selectfont}{}
+
+\newenvironment{toclight}{\fontfamily{\sansfontype}\fontseries{l}\fontshape{n}\fontsize{12}{14}\selectfont}{}
+\newenvironment{tocbold}{\fontfamily{\sansfontype}\fontseries{b}\fontshape{n}\fontsize{11}{13}\selectfont}{}
+\newenvironment{tocname}{\fontfamily{\sansfontype}\fontseries{m}\fontshape{n}\fontsize{10}{12}\selectfont}{}
+\newenvironment{toctititem}{\fontfamily{\sansfontype}\fontseries{m}\fontshape{it}\fontsize{10}{12}\selectfont}{}
+
+\newenvironment{bigtitle}{\fontfamily{\sansfontype}\fontseries{ub}\fontshape{n}\fontsize{30}{35}\selectfont}{}
+
+\newenvironment{kolumnada}{\fontfamily{\rmdefault}\fontseries{m}\fontshape{n}\fontsize{9.6}{12.7}\selectfont}{}
+
+
+
+%\usepackage{ebgaramond} % nice Garamond
+%\usepackage{xcharter} % alt font
+%\usepackage{baskervald} % alt font
+%\usepackage{qtimes}
+%\usepackage{txfonts}
+%\fontfamily{times}
+%\usepackage{mathptmx}
+%\fontfamily{qtimes-LF}
+%\usepackage{tgtermes}
+\renewcommand{\rmdefault}{txr}
+\renewcommand{\normalsize}{\fontsize{10.3}{15.2}\selectfont}
+\selectfont
+
+\makeatletter
+\renewcommand\small{%
+	\@setfontsize\small{9.3}{13}%
+	\abovedisplayskip 10\p@ \@plus2\p@ \@minus5\p@
+	\abovedisplayshortskip \z@ \@plus3\p@
+	\belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
+	\def\@listi{\leftmargin\leftmargini
+		\topsep 6\p@ \@plus2\p@ \@minus2\p@
+		\parsep 3\p@ \@plus2\p@ \@minus\p@
+		\itemsep \parsep}%
+	\belowdisplayskip \abovedisplayskip
+}
+\renewcommand\footnotesize{%
+	\@setfontsize\footnotesize{8.3}{11}%
+	\abovedisplayskip 8\p@ \@plus2\p@ \@minus4\p@
+	\abovedisplayshortskip \z@ \@plus\p@
+	\belowdisplayshortskip 4\p@ \@plus2\p@ \@minus2\p@
+	\def\@listi{\leftmargin\leftmargini
+		\topsep 4\p@ \@plus2\p@ \@minus2\p@
+		\parsep 2\p@ \@plus\p@ \@minus\p@
+		\itemsep \parsep}%
+	\belowdisplayskip \abovedisplayskip
+}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%
+
+\usepackage{cmap} %polskie znaki przy kopiowaniu do innych edytorów
+
+%----------inicjały-----------------------------------------
+\usepackage{lettrine}
+\makeatletter
+\renewcommand\@makefntext[1]{%
+  \noindent\makebox[0.3em][r]{\@makefnmark}#1}
+\makeatother
+%---------------------------------------------------------
+
+\clubpenalty10000
+\widowpenalty10000
+%\flushbottom
+
+%\widowpenalties 3 10000 10000 0
+\displaywidowpenalties 2 10000 0
+
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\renewcommand{\sectionmark}[1]%
+                 {\markright{\thesection\ #1}}
+\renewcommand{\subsectionmark}[1]%
+                 {\markright{\thesubsection\ #1}}
+\lhead[\fancyplain{}{\pagnum{\thepage}}]%
+      {\fancyplain{}{\pagtit{\rightmark}}}
+\rhead[\fancyplain{}{\pagtit{\leftmark}}]%
+      {\fancyplain{}{\pagnum{\thepage}}}
+\cfoot{}
+\sloppy
+\headsep10pt
+\renewcommand{\sectionmark}[1]{} %usuwa tytuły sekcji z paginy górnej :/
+
+
+
+
+\newcommand{\zfntitle}{Zagadnienia Filozoficzne w~Nauce}
+\newcommand{\zfntitleeng}{Philosophical Problems in Science}
+%\newcommand{\rok}{2021} % lub rok
+\newcommand{\rok}{\the\year} % lub rok
+\newcommand{\numerarabski}{72}
+\newcommand{\numerrzymski}{LXXII}
+\newcommand{\infbiblio}{\zfntitle, nr \numerarabski\ (\rok), ss.~}
+\newcommand{\infbiblioeng}{\zfntitle, No \numerarabski\ (\rok), pp.~}
+
+\usepackage{eso-pic}
+\usepackage{rotating}
+\usepackage[most]{tcolorbox}
+\newcommand{\placetextbox}[3]{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+	\AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+		\put(\LenToUnit{#1},\LenToUnit{#2}){\begin{rotate}{90}\begin{tcolorbox}[hbox,boxsep=0pt,top=3mm,left=23mm,right=10mm, bottom=0mm,arc=0pt,auto outer arc,colback=gray!10,colframe=gray!10]\begin{minipage}[t][23mm][t]{\textwidth}#3\end{minipage}\end{tcolorbox}\end{rotate}}%
+	}%
+}%
+
+\newcounter{tocnr}\setcounter{tocnr}{0}
+
+%\newcommand{\pasekpl}{%
+%\placetextbox{153mm}{-3mm}{\begin{subsubsectit}\infbiblio\pageref*{\tocnr}\textendash\pageref*{e\tocnr}\end{subsubsectit}\par%
+%	\vspace{.4mm}%
+%	\noindent\raisebox{-1.75pt}{\includegraphics[height=9.5pt]{images/CC-BY-NC-ND}}%
+%	\begin{subsubsectit}\begin{small}\enspace CC-BY-NC-ND 4.0\end{small}\end{subsubsectit}}%
+%}
+%\newcommand{\pasekeng}{%
+%	\placetextbox{153mm}{-3mm}{\begin{subsubsectit}\infbiblioeng\pageref*{\tocnr}\textendash\pageref*{e\tocnr}\end{subsubsectit}\par%
+%		\vspace{.2mm}%
+%		\noindent\raisebox{-1.75pt}{\includegraphics[height=9.5pt]{images/CC-BY-NC-ND}}%
+%		\begin{subsubsectit}\begin{small}\enspace CC-BY-NC-ND 4.0\end{small}\end{subsubsectit}}%
+%}
+
+
+\newcommand{\pasekpl}{%
+	\placetextbox{153mm}{-3mm}{\begin{subsubsectit}\begin{small}%
+				\zfntitle\: (\zfntitleeng)%
+		\par\vspace{.1mm}%
+		nr \numerarabski\ (\rok), %
+		ss.~\pageref*{\tocnr}\textendash\pageref*{e\tocnr} \enspace $\bullet$ \enspace\end{small}%
+	\begin{footnotesize}CC-BY-NC-ND 4.0\end{footnotesize}\end{subsubsectit}%
+		\enspace\raisebox{-1.75pt}{\includegraphics[height=9.5pt]{_images/CC-BY-NC-ND}}}%
+}
+\newcommand{\pasekeng}{%
+	\placetextbox{153mm}{-3mm}{\begin{subsubsectit}\begin{small}%
+				\zfntitleeng\: (\zfntitle)%
+		\par\vspace{.1mm}%
+		No \numerarabski\ (\rok), %
+		pp.~\pageref*{\tocnr}\textendash\pageref*{e\tocnr} \enspace $\bullet$ \enspace\end{small}%
+		\begin{footnotesize}CC-BY-NC-ND 4.0\end{footnotesize}\end{subsubsectit}%
+		\enspace\raisebox{-1.75pt}{\includegraphics[height=9.5pt]{_images/CC-BY-NC-ND}}}%
+}
+
+
+
+\newenvironment{artplenv}[8]%
+{	\setcounter{footnote}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{section}{0}%
+	\setcounter{subsection}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{table}{0}%
+	\setcounter{figure}{0}%
+	\cleardoublepage%
+	\widowpenalties 3 10000 10000 0%
+	\thispagestyle{plain}\addtocounter{tocnr}{1}\newcommand\tocnr{x\arabic{tocnr}}% empty plain
+	\phantomsection\label{\tocnr}% 
+	\addtocontents{toc}{\noindent{\tocname{#1}}\\}%
+	\addtocontents{toc}{{\toctititem#4% \tocname[#6]
+	}\dotfill{\subsubsectit\pageref{\tocnr}}}%
+	\addtocontents{toc}{\vskip.8\baselineskip}
+	\begin{refsection}%
+		\pasekpl%
+	\begin{raggedleft}%
+		{\flushright\chaptitle\color{black!70}{#2\par}}%
+		\vspace{7mm}%
+		{\flushright\subbold{#1}\\\subsubsectit\small{#5}\par}%
+		\vspace{5mm}%
+		\selectlanguage{english} %
+		{\flushright\chaptitleeng\color{black!50}{#6}}\par%
+	\end{raggedleft}%
+	\vspace{5mm}%
+	{\subsubsectit{\hfill Abstract}}\\{#7}\par%
+	\vspace{2mm}%
+	{\subsubsectit{\hfill Keywords}}\\{#8}%
+	\vspace{5mm}%
+	\selectlanguage{polish}%
+	\markboth{\pagname\protect{#1}}{\pagtit\protect{#3}}%
+	}%
+{%
+	\section*{Bibliografia}%
+	\printbibliography[heading=none]\nopagebreak[4]%
+	\label{e\tocnr}%
+\end{refsection}%
+}
+
+\newcounter{labelhere}
+\makeatletter
+\newcommand\pagerefhere{%
+ \stepcounter{labelhere}%
+ \pageref{here\thelabelhere}\label{here\thelabelhere}}
+
+
+\newenvironment{artengenv}[7]%
+{	\setcounter{footnote}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{section}{0}%
+	\setcounter{subsection}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{table}{0}%
+	\setcounter{figure}{0}%
+	\cleardoublepage%
+	\widowpenalties 3 10000 10000 0%
+	\thispagestyle{plain}\addtocounter{tocnr}{1}\newcommand\tocnr{x\arabic{tocnr}}% empty plain
+	\phantomsection\label{\tocnr}% 
+	\addtocontents{toc}{\noindent{\tocname{#1}}\\}%
+	\addtocontents{toc}{{\toctititem#4}\dotfill{\subsubsectit\pageref{\tocnr}}}%
+	\addtocontents{toc}{\vskip.8\baselineskip}
+	\begin{refsection}%
+		\selectlanguage{english}%
+		\pasekeng%
+		\begin{raggedleft}%
+			{\flushright\chaptitle\color{black!70}{#2\par}}%
+			\vspace{7mm}%
+			{\flushright\subbold{#1}\\\subsubsectit\small{#5}\par}%
+		\end{raggedleft}%
+		\vspace{5mm}%
+		{\subsubsectit{\hfill Abstract}}\\{#6}\par%
+		\vspace{2mm}%
+		{\subsubsectit{\hfill Keywords}}\\{#7}%
+		\vspace{5mm}%
+		\markboth{\pagname\protect{#1}}{\pagtit\protect{#3}}%
+		}%
+	{%
+		\section*{Bibliography}%
+		\printbibliography[heading=none]\nopagebreak[4]%
+		\label{e\tocnr}%
+	\end{refsection}%
+}
+
+%stworzne na potrzeby dwóch autorów, trzrba przemyśleć
+\newenvironment{artengenv2auth}[8]%
+{	\setcounter{footnote}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{section}{0}%
+	\setcounter{subsection}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{table}{0}%
+	\setcounter{figure}{0}%
+	\cleardoublepage%
+	\widowpenalties 3 10000 10000 0%
+	\thispagestyle{plain}\addtocounter{tocnr}{1}\newcommand\tocnr{x\arabic{tocnr}}% empty plain
+	\phantomsection\label{\tocnr}% 
+	\addtocontents{toc}{\noindent{\tocname{#1}}\\}%
+	\addtocontents{toc}{{\toctititem#4}\dotfill{\subsubsectit\pageref{\tocnr}}}%
+	\addtocontents{toc}{\vskip.8\baselineskip}
+	\begin{refsection}%
+		\selectlanguage{english}%
+		\pasekeng%
+		\begin{raggedleft}%
+			{\flushright\chaptitle\color{black!70}{#2\par}}%
+			\vspace{7mm}%
+			{#8}%
+		\end{raggedleft}%
+		\vspace{5mm}%
+		{\subsubsectit{\hfill Abstract}}\\{#6}\par%
+		\vspace{2mm}%
+		{\subsubsectit{\hfill Keywords}}\\{#7}%
+		\vspace{5mm}%
+		\markboth{\pagname\protect{#1}}{\pagtit\protect{#3}}%
+		}%
+	{%
+		\section*{Bibliography}\nopagebreak[4]%
+		\printbibliography[heading=none]%
+		\label{e\tocnr}%
+	\end{refsection}%
+}
+
+\newenvironment{artplenv2auth}[9]%
+{	\setcounter{footnote}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{section}{0}%
+	\setcounter{subsection}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{table}{0}%
+	\setcounter{figure}{0}%
+	\cleardoublepage%
+	\widowpenalties 3 10000 10000 0%
+	\thispagestyle{plain}\addtocounter{tocnr}{1}\newcommand\tocnr{x\arabic{tocnr}}% empty plain
+	\phantomsection\label{\tocnr}%
+	\addtocontents{toc}{\noindent{\tocname{#1}}\\}%
+	\addtocontents{toc}{{\toctititem#4}\dotfill{\subsubsectit\pageref{\tocnr}}}%
+	\addtocontents{toc}{\vskip.8\baselineskip}
+	\begin{refsection}%
+		\pasekpl%
+	\begin{raggedleft}%
+		{\flushright\chaptitle\color{black!70}{#2\par}}%
+		\vspace{7mm}%
+		{#9}%
+		\vspace{5mm}%
+		\selectlanguage{english} %
+		{\flushright\chaptitleeng\color{black!50}{#6}}\par%
+	\end{raggedleft}%
+	\vspace{5mm}%
+	{\subsubsectit{\hfill Abstract}}\\{#7}\par%
+	\vspace{2mm}%
+	{\subsubsectit{\hfill Keywords}}\\{#8}%
+	\vspace{5mm}%
+	\selectlanguage{polish}%
+	\markboth{\pagname\protect{#1}}{\pagtit\protect{#3}}%
+	}%
+{%
+	\section*{Bibliografia}%
+	\printbibliography[heading=none]\nopagebreak[4]%
+	\label{e\tocnr}%
+\end{refsection}%
+}
+
+
+
+\newenvironment{editorial}[5]%
+{	\setcounter{footnote}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{section}{0}%
+	\setcounter{subsection}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{table}{0}%
+	\setcounter{figure}{0}%
+	\cleardoublepage%
+	\widowpenalties 3 10000 10000 0%
+	\thispagestyle{plain}\addtocounter{tocnr}{1}\newcommand\tocnr{x\arabic{tocnr}}% empty plain
+	\phantomsection\label{\tocnr}%
+	\addtocontents{toc}{\noindent{\tocname{#1}}\\}%
+	\addtocontents{toc}{{\toctititem#4}\dotfill{\subsubsectit\pageref{\tocnr}}}%
+	\addtocontents{toc}{\vskip.8\baselineskip}
+		\pasekpl%
+		\begin{raggedleft}%
+			{\flushright\chaptitle\color{black!70}{#2\par}}%
+%			\vspace{3mm}%
+			\selectlanguage{english} %
+			{\flushright\chaptitleeng\color{black!50}{#5}}\par%
+			\vspace{5mm}%
+			{\flushright\subbold{#1}\par}%
+			\vspace{5mm}%
+		\end{raggedleft}%
+		\vspace{5mm}%
+		\selectlanguage{polish}%
+		\markboth{\pagname\protect{#1}}{\pagtit\protect{#3}}%
+	}%
+	{%
+	\label{e\tocnr}%
+	}
+	
+
+\newenvironment{editorialeng}[5]%
+{	\setcounter{footnote}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{section}{0}%
+	\setcounter{subsection}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{table}{0}%
+	\setcounter{figure}{0}%
+	\cleardoublepage%
+	\widowpenalties 3 10000 10000 0%
+	\thispagestyle{plain}\addtocounter{tocnr}{1}\newcommand\tocnr{x\arabic{tocnr}}% empty plain
+	\phantomsection\label{\tocnr}%
+	\addtocontents{toc}{\noindent{\tocname{#1}}\\}%
+	\addtocontents{toc}{{\toctititem#4}\dotfill{\subsubsectit\pageref{\tocnr}}}%
+	\addtocontents{toc}{\vskip.8\baselineskip}
+		\pasekeng%
+		\begin{raggedleft}%
+			\selectlanguage{english} %
+			{\flushright\chaptitle\color{black!70}{#2\par}}%
+%			\vspace{3mm}%
+%			{\flushright\chaptitleeng\color{black!50}{#5}}\par%
+%			\vspace{5mm}%
+			{\flushright\subbold{#1}\par}%
+			\vspace{5mm}%
+		\end{raggedleft}%
+		\vspace{5mm}%
+		\selectlanguage{english}%
+		\markboth{\pagname\protect{#1}}{\pagtit\protect{#3}}%
+}%
+{%
+\label{e\tocnr}%
+}
+
+
+
+\newenvironment{recplenv}[4]%
+{%	
+	\setcounter{footnote}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{section}{0}%
+	\setcounter{subsection}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{table}{0}%
+	\setcounter{figure}{0}%
+	\clearpage%
+	\widowpenalties 2 10000 0%
+	\thispagestyle{empty}\addtocounter{tocnr}{1}\newcommand\tocnr{x\arabic{tocnr}}% empty plain
+	\phantomsection\label{\tocnr}% 
+	\begin{multicols}{2}%
+		\raggedcolumns%
+		\begin{kolumnada}%
+	\begin{refsection}%
+		\selectlanguage{polish} %
+		\pasekpl%
+		\begin{raggedleft}%
+			{\flushright\rectitle\color{black!70}{#2\par}}%chaptitle
+			\vspace{2mm}%
+			{\flushright\reclight\small{#4}\par}%subbold reclight
+			\vspace{3mm}%
+		\end{raggedleft}%
+		%\markboth{\pagname\protect{#1}}{\pagtit\protect{#2}}%
+		\fancyhead[C]{\pagtit{Recenzje}}
+		\markboth{}{}%
+		\addtocontents{toc}{\noindent{\tocname{#1}}\\}%
+		\addtocontents{toc}{{\toctititem#3}\dotfill{\subsubsectit\pageref{\tocnr}}}%
+		\addtocontents{toc}{\vskip.8\baselineskip}}%
+	{%
+		\begin{spacing}{0.9}%
+			\printbibliography[heading=none]%
+		\end{spacing}%
+		\label{e\tocnr}%
+	\end{refsection}%
+		\end{kolumnada}%
+	\end{multicols}%
+}
+
+\newcommand{\autorrec}[1]{\nopagebreak[4]\medskip\raggedleft{\large\textsc{#1}}\par}
+%\newcommand{\autorrec}[1]{\nopagebreak[4]\smallskip\raggedleft{\recautor{#1}}\par}
+
+
+\newenvironment{recengenv}[4]%
+{%	
+	\setcounter{footnote}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{section}{0}%
+	\setcounter{subsection}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{table}{0}%
+	\clearpage%
+	\widowpenalties 2 10000 0%
+	\thispagestyle{empty}\addtocounter{tocnr}{1}\newcommand\tocnr{x\arabic{tocnr}}% empty plain
+	\phantomsection\label{\tocnr}% 
+	\addtocontents{toc}{\noindent{\tocname{#1}}\\}%
+	\addtocontents{toc}{{\toctititem#3}\dotfill{\subsubsectit\pageref{\tocnr}}}%
+	\addtocontents{toc}{\vskip.8\baselineskip}
+	\begin{multicols}{2}%
+		\raggedcolumns%
+		\begin{kolumnada}%
+			\begin{refsection}%
+				\selectlanguage{english} %
+				\pasekeng%
+				\begin{raggedleft}%
+					{\flushright\rectitle\color{black!70}{#2\par}}%chaptitle
+					\vspace{2mm}%
+					{\flushright\reclight\small{#4}\par}%subbold reclight
+					\vspace{3mm}%
+				\end{raggedleft}%
+				%\markboth{\pagname\protect{#1}}{\pagtit\protect{#2}}%
+				\fancyhead[C]{\pagtit{Book reviews}}
+				\markboth{}{}%
+				}%
+			{%
+				\begin{spacing}{0.9}%
+					\printbibliography[heading=none]%
+				\end{spacing}%
+				\label{e\tocnr}%
+			\end{refsection}%
+		\end{kolumnada}%
+	\end{multicols}%
+}
+
+
+\newenvironment{newrevplenv}[6]%
+{	\setcounter{footnote}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{section}{0}%
+	\setcounter{subsection}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{table}{0}%
+	\setcounter{figure}{0}%
+	\cleardoublepage%
+	\widowpenalties 3 10000 10000 0%
+	\thispagestyle{plain}\addtocounter{tocnr}{1}\newcommand\tocnr{x\arabic{tocnr}}% empty plain
+	\phantomsection\label{\tocnr}% 
+	\addtocontents{toc}{\noindent{\tocname{#1}}\\}%
+	\addtocontents{toc}{{\toctititem#4}\dotfill{\subsubsectit\pageref{\tocnr}}}%
+	\addtocontents{toc}{\vskip.8\baselineskip}
+	\begin{refsection}%
+		\selectlanguage{polish}%
+		\pasekpl%
+		\begin{raggedleft}%
+			{\flushright\chaptitle\color{black!70}{#2\par}}%
+			\vspace{5mm}%
+			{\flushright\subbold{#1}\\\subsubsectit\small{#5}\par}%
+			\vspace{3mm}%
+			{\flushright\textsf{\small{#6}}\par}%subbold reclight
+		\end{raggedleft}%
+		\vspace{7mm}%
+		\markboth{\pagname\protect{#1}}{\pagtit\protect{#3}}%
+		}%
+	{%
+		\section*{Bibliografia}%
+		\printbibliography[heading=none]\nopagebreak[4]%
+		\label{e\tocnr}%
+	\end{refsection}%
+}
+
+
+\newenvironment{newrevplenv2auth}[6]%
+{	\setcounter{footnote}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{section}{0}%
+	\setcounter{subsection}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{table}{0}%
+	\setcounter{figure}{0}%
+	\cleardoublepage%
+	\widowpenalties 3 10000 10000 0%
+	\thispagestyle{plain}\addtocounter{tocnr}{1}\newcommand\tocnr{x\arabic{tocnr}}% empty plain
+	\phantomsection\label{\tocnr}% 
+	\addtocontents{toc}{\noindent{\tocname{#1}}\\}%
+	\addtocontents{toc}{{\toctititem#4}\dotfill{\subsubsectit\pageref{\tocnr}}}%
+	\addtocontents{toc}{\vskip.8\baselineskip}
+	\begin{refsection}%
+		\selectlanguage{polish}%
+		\pasekpl%
+		\begin{raggedleft}%
+			{\flushright\chaptitle\color{black!70}{#2\par}}%
+			\vspace{5mm}%
+			{{#5}\par}%
+			\vspace{3mm}%
+			{\flushright\textsf{\small{#6}}\par}%subbold reclight
+		\end{raggedleft}%
+		\vspace{7mm}%
+		\markboth{\pagname\protect{#1}}{\pagtit\protect{#3}}%
+		}%
+	{%
+		\section*{Bibliografia}%
+		\printbibliography[heading=none]\nopagebreak[4]%
+		\label{e\tocnr}%
+	\end{refsection}%
+}
+
+
+\newenvironment{newrevengenv}[6]%
+{	\setcounter{footnote}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{section}{0}%
+	\setcounter{subsection}{0}%
+	\setcounter{equation}{0}%
+	\setcounter{table}{0}%
+	\setcounter{figure}{0}%
+	\cleardoublepage%
+	\widowpenalties 3 10000 10000 0%
+	\thispagestyle{plain}\addtocounter{tocnr}{1}\newcommand\tocnr{x\arabic{tocnr}}% empty plain
+	\phantomsection\label{\tocnr}% 
+	\addtocontents{toc}{\noindent{\tocname{#1}}\\}%
+	\addtocontents{toc}{{\toctititem#4}\dotfill{\subsubsectit\pageref{\tocnr}}}%
+	\addtocontents{toc}{\vskip.8\baselineskip}
+	\begin{refsection}%
+		\selectlanguage{english}%
+		\pasekeng%
+		\begin{raggedleft}%
+			{\flushright\chaptitle\color{black!70}{#2\par}}%
+			\vspace{5mm}%
+			{\flushright\subbold{#1}\\\subsubsectit\small{#5}\par}%
+			\vspace{3mm}%
+			{\flushright\textsf{\small{#6}}\par}%subbold reclight
+		\end{raggedleft}%
+		\vspace{7mm}%
+		\markboth{\pagname\protect{#1}}{\pagtit\protect{#3}}%
+		}%
+	{%
+		\section*{Bibliography}%
+		\printbibliography[heading=none]\nopagebreak[4]%
+		\label{e\tocnr}%
+	\end{refsection}%
+}
+
+
+% ----------------------------------------------------------------------
+
+%\setstretch{1.5}
+
+\renewcommand{\part}[1]{{\par\vskip 2\baselineskip
+\flushright\parttitle{#1}\par\nopagebreak[4]\addtocounter{part}{1}}}
+
+\makeatletter
+\newcommand{\dodateknumer}{\Roman{section}}
+\newcommand{\sekcjanumer}{\arabic{section}}
+\renewcommand*\thesection{%
+	\ifnum\pdfstrcmp{\@currenvir}{appendices}=0%
+	\dodateknumer%
+	\else%
+	\sekcjanumer%
+	\fi
+}
+\makeatother
+
+%\renewcommand{\section}[1]{{\par\vskip 2\baselineskip
+%\flushright\sectit{\thesection.~#1}\par\nopagebreak[4]\vskip 1\baselineskip\addtocounter{section}{1}}}
+
+\usepackage{titlesec}
+\makeatletter
+\newcommand*{\justifyheading}{\raggedleft}
+\newcommand{\setappendix}{Dodatek~\thesection:}
+\newcommand{\setsection}{\thesection.}
+\titleformat{\section}
+{\sectit\justifyheading}{%
+\ifnum\pdfstrcmp{\@currenvir}{appendices}=0%
+  	\setappendix%
+  	\else%
+  	\setsection%
+  	\fi
+}{0.3em}{}
+\titlespacing*{\section}{0pt}{2.0\baselineskip}{1.0\baselineskip}[0pt]
+\makeatother
+
+
+%\titleformat{\part}
+%  {\parttitle\justifyheading}{\thepart:}{0em}{}
+%\titlespacing*{\part}{0pt}{2.0\baselineskip}{1.0\baselineskip}[0pt]
+
+
+
+\newcommand{\sectionno}[1]{{\par\vskip 2\baselineskip
+\flushright\sectit{#1}\par\nopagebreak[4]\vskip 1\baselineskip}}
+
+
+\renewcommand{\subsection}[1]{{\par\vskip 2\baselineskip
+\flushright\subsectit{#1}\par\nopagebreak[4]\vskip 1\baselineskip\addtocounter{subsection}{1}}}
+
+\newcommand{\subsectionno}[1]{{\par\vskip 2\baselineskip
+		\flushright\subsectit{#1}\par\nopagebreak[4]\vskip 1\baselineskip}}
+
+\renewcommand{\subsubsection}[1]{{\par\vskip 2\baselineskip
+\flushright\subsubsectit{#1}\par\nopagebreak[4]\vskip 1\baselineskip\addtocounter{subsubsection}{1}}}
+
+\newcommand{\subsubsectionno}[1]{{\par\vskip 2\baselineskip
+		\flushright\subsubsectit{#1}\par\nopagebreak[4]\vskip 1\baselineskip}}
+
+
+
+%----------------TOC--------------------
+\setcounter{tocdepth}{0}
+\makeatletter
+\addto\captionsenglish{\renewcommand\contentsname{Table of contents}}
+%\renewcommand\tableofcontents{%
+%    \vspace*{50\p@}%
+%    \section*{\toctit{\contentsname}%
+%    \@mkboth{%
+%          \czwit\contentsname}{\czwit\contentsname}}%
+%          \vskip0.5in%
+%    \@starttoc{toc}%
+%}
+\renewcommand\tableofcontents{%
+	\begin{flushright}%
+	{\bigtitle\color{black!70}{Zagadnienia\\Filozoficzne\\w Nauce\par}}%
+	\vskip0.35in%
+	{\chaptitleeng\color{black!70}{Philosophical Problems in Science\par}}%
+	\vskip0.25in%
+	\hrule%
+	\medskip%
+	{\bigtitle\color{black!50}{\numerrzymski\ }%
+			\raisebox{1.5pt}{\chaptitle$\blacksquare$}%
+			{\ \bigtitle\rok}}%
+	\medskip%
+	\hrule%
+	\end{flushright}%
+		\@mkboth{\czwit\contentsname}{\czwit\contentsname}%
+	\vskip0.5in%
+	\@starttoc{toc}%
+}
+ \renewcommand*\l@section{\@dottedtocline{1}{0em}{0em}}
+ \renewcommand*\l@subsection{\@dottedtocline{1}{0em}{1em}}
+% \renewcommand{\cftchapterfont}{\raggedleft}
+\makeatother
+
+%\usepackage[titles]{tocloft}
+%\renewcommand{\contentsname}{Table of contents}
+%\renewcommand{\cftchapfont}{\raggedleft\reclight}% titles in bol
+
+%\usepackage{titletoc}% http://ctan.org/pkg/titletoc
+%\titlecontents*{chapter}% <section-type>
+%[0pt]% <left>
+%{}% <above-code>
+%{}% <numbered-entry-format>
+%{\reclight}% <numberless-entry-format>
+%{}% <filler-page-format>
+
+
+\newcommand{\sekcja}[2]{%
+	\cleardoublepage
+	\thispagestyle{empty}
+	\vspace*{1.7in}%
+	\begin{flushright}
+		\chaptitle\color{black!70}{#1}\par
+		\vspace*{.5in}%
+		\chaptitleeng\color{black!50}{#2}\par
+	\end{flushright}
+	\vfill
+	\cleardoublepage
+%	\addcontentsline{toc}{chapter}{#1}%
+	\addtocontents{toc}{\vskip0.3\baselineskip}
+	\addtocontents{toc}{%
+		\hfill%
+		{\noindent\toclight{#1}\par}%
+		\hfill%
+		\mbox{\noindent\toclight\small{#2}\par}%
+	}%
+		\addtocontents{toc}{\vskip0.5\baselineskip}
+}
+
+\newcommand{\sekcjatoconly}[1]{%
+	%	\addcontentsline{toc}{chapter}{#1}%
+	\addtocontents{toc}{\vskip0.3\baselineskip}
+	\addtocontents{toc}{%
+		\hfill%
+		{\noindent\toclight{#1}}%
+	}%
+	\addtocontents{toc}{\vskip0.5\baselineskip}
+}
+
+
+
+%---------------bibliografia-------------------------
+
+\usepackage[style=bath,
+citestyle=authoryear-comp,
+uniquename=false,
+dateabbrev=false,
+sortcites=false,
+useprefix=false,
+maxbibnames=4,
+%autolang=other,
+backend=biber]{biblatex}
+%uwaga ustew biber jako program do biliografii lub" pdflatex -> biber -> pdflatex -> pdflatex
+%readme: ftp://sunsite.icm.edu.pl/pub/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf
+
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
+
+\usepackage[autostyle=true]{csquotes}
+
+
+%----dodaje prefixy nazwisk (von, de) do bibliografii zachowujac sortowanie
+%----useprefix musi być ustawione na false
+\makeatletter
+\AtBeginDocument{\toggletrue{blx@useprefix}}
+\makeatother
+
+%---prefixy nazwisk minuskułami
+\renewbibmacro*{begentry}{\midsentence}
+
+%\renewbibmacro*{bybookauthor}{%
+%  \ifnamesequal{author}{bookauthor}
+%    {\usebibmacro{cite:idem}}
+%    {\printnames{bookauthor}}}
+
+
+
+%\addbibresource{ART_Gorazda/gorazda.bib}
+%\addbibresource{ART_Polak/polak.bib}
+%\addbibresource{ART_Wysocki/wysocki.bib}
+%\addbibresource{ART_Zaluski/zaluski.bib}
+%\addbibresource{REP_Gradzka/gradzka.bib}
+%\addbibresource{REV_Borek/borek.bib}
+%\addbibresource{REV_Cygan/cygan.bib}
+%\addbibresource{REV_Gradzka/gradzka.bib}
+%\addbibresource{REV_Krzanowski/krzanowski.bib}
+%\addbibresource{REV_Mscislawski/mscislaw.bib}
+%\addbibresource{REV_Piechowicz/piechowicz.bib}
+%\addbibresource{REV_Polak/polak.bib}
+\addbibresource{ZYC_heller/heller.bib}
+\addbibresource{REV_heller_maczka/heller_maczka.bib}
+\addbibresource{ART_dajka/dajka.bib}
+
+
+\renewcommand*{\nameyeardelim}{\addcomma\space}
+\renewcommand{\compcitedelim}{\multicitedelim}
+%\assignrefcontextentries[]{*}
+\renewcommand*{\bibfont}{\small}
+\setlength\bibitemsep{0.1\itemsep}
+
+%Zmienia Wyed. na red.
+\usepackage{xpatch}
+\NewBibliographyString{series}
+\DefineBibliographyStrings{polish}{%
+%	byeditor = {red\adddot},%
+%	in = {[w\addcolon]},%
+	urlseen = {ostatni dostęp\addcolon},%
+	online = {Online},%
+	urlfrom = {Dostępne na\addcolon},%
+	page = {s\adddot~},%
+	pages = {ss\adddot~},%
+	idem = {Tenże},%
+%	part = {część},%
+%	bytranslator = {Tłum.},%
+%	andothers = {i~in\adddot\addcomma},%
+	andothers = {i~in\adddot},%
+	series = {seria\addcolon\space},%
+}
+
+\DefineBibliographyStrings{english}{%
+	urlfrom = {Available at:},% w oryginale Available from: moim zdaniem ok
+	series = {},%
+	online = {Online},%
+	unpublished = {[unpublished]}
+}
+
+
+%--- Journal titles as is
+
+\newbibmacro*{journal}{%
+  \iffieldundef{journaltitle}
+    {}
+    {\printtext[journaltitle]{%
+       \printfield[pujournaltits]{journaltitle}%
+       \setunit{\subtitlepunct}%
+       \printfield[pujournaltits]{journalsubtitle}}}}
+       
+\DeclareFieldFormat{pujournaltits}{#1}
+
+
+%-- online no-date without "n.d."
+
+\DeclareLabeldate[online]{%
+  \field{date}
+  \field{year}
+  \field{eventdate}
+  \field{origdate}
+  \field{urldate}
+}
+
+
+\setlength{\bibhang}{1.5em}
+
+
+
+%\DeclareFieldFormat[article]{volume}{{#1}}
+%\DeclareFieldFormat{url}{<#1>}
+\DeclareFieldFormat{url}{\bibsentence\bibstring{urlfrom}\addcolon\space<\url{#1}>} %dodaje nawiasy trójkątne do url
+\DeclareFieldFormat[book,inbook,incollection,collection]{series}{\bibstring{series}\mkbibemph{#1}}
+\iflanguage{polish}{\renewcommand*{\finalnamedelim}{\addspace\bibstring{and}~}} %dodaje twardą spację do Autor i~Autor
+\renewcommand\bibnamedelimc{\addnbspace}
+\renewcommand\bibnamedelimd{\addnbspace}
+
+    
+%\renewbibmacro*{cite:idem}{\bibstring[\mkidem]{idem\thefield‌{gender}}\setunit{\p‌​rintdelim{nametitled‌​elim}}}
+
+
+
+\DeclareLanguageMapping{polish}{polish}
+\DeclareLanguageMapping{english}{british-bath}
+\DeclareLanguageMapping{german}{german-apa}
+
+
+
+
+\AtEveryBibitem{%
+	\clearfield{titleaddon}%
+	\clearfield{month}%
+	\clearfield{note}%
+	\clearlist{language}%
+}
+\AtEveryCitekey{\clearfield{month}}
+
+
+%normalna czcionka przy arXiv
+\makeatletter
+\DeclareFieldFormat{eprint:arxiv}{%
+	arXiv\addcolon\space
+	\ifhyperref
+	{\href{https://arxiv.org/\abx@arxivpath/#1}{%
+			\nolinkurl{#1}%
+			\iffieldundef{eprintclass}
+			{}
+			{\addspace\mkbibbrackets{\thefield{eprintclass}}}}}
+	{\nolinkurl{#1}%
+		\iffieldundef{eprintclass}
+		{}
+		{\addspace\mkbibbrackets{\thefield{eprintclass}}}}}
+\makeatother
+
+
+%linkowanie do bib entry
+\newcommand{\citelink}[2]{\hyperlink{cite.\therefsection @#1}{#2}}
+
+
+
+%\setcounter{biburlnumpenalty}{9000}
+%\setcounter{biburllcpenalty}{7000}
+%\setcounter{biburlucpenalty}{8000}
+
+
+%----sieroty i wdowy w bibliografii-----
+\usepackage{etoolbox,apptools}
+\makeatletter
+\AtBeginEnvironment{thebibliography}{%
+	\clubpenalty10000
+	\@clubpenalty \clubpenalty
+	\widowpenalty10000}
+\makeatother
+
+
+
+
+%------przypisy----------------------------------------
+
+\makeatletter
+\renewcommand\@makefntext[1]{\leftskip=0em\hskip0em\@makefnmark#1}
+\makeatother
+
+\renewcommand{\footnoterule}{\kern5pt\hrule width1in\kern5pt}
+
+%lekko przedefiniowany przypis (odstęp między znaczkiem przypisu, a~tekstem przypisu)
+\renewcommand\footnote[1]{\footnotemark\footnotetext{\hspace{0.2em}#1}}
+
+%przypis redakcji (oznaczany asteriskiem),
+%nie zmienia numeracji przypisów autorskich
+\newcommand{\edtfootnote}[1]{\renewcommand{\thefootnote}{*}\footnote{#1}\addtocounter{footnote}{-1}\renewcommand{\thefootnote}{\arabic{footnote}}}
+
+%przypis bez numeru
+\newcommand\blfootnote[1]{%
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{#1}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+}
+
+
+
+
+%\newenvironment{myquote}[1]{\begin{quote}\small} {\par\end{quote}}
+%\newenvironment{myQuote}{\begin{quotation}{\small}} {\par\end{quotation}}
+\newcommand{\myquote}[1]{\begin{quote}{\small#1\par}\end{quote}}
+\newcommand{\myQuote}[1]{\begin{quotation}{\small#1\par}\end{quotation}}
+\newcommand{\mydots}{\hbox to 1em{.\hss.\hss.}}
+
+
+\newenvironment{myquoterev}{%
+	\list{}{%
+		\leftmargin0.3cm   % this is the adjusting screw
+		\rightmargin\leftmargin
+		\footnotesize
+	}
+	\item\relax
+}
+{\endlist\par}
+
+
+
+
+
+
+
+\setlength{\parskip}{0ex plus 0.1ex minus 0.1ex}
+\def\chaptername{}
+
+%\makeatletter
+%	\newenvironment{indentation}[3]%
+%	{\par\setlength{\parindent}{#3}
+%	\setlength{\leftmargin}{#1}       \setlength{\rightmargin}{#2}%
+%	\advance\linewidth -\leftmargin       \advance\linewidth -\rightmargin%
+%	\advance\@totalleftmargin\leftmargin  \@setpar{{\@@par}}%
+%	\parshape 1\@totalleftmargin \linewidth\ignorespaces}{\par}%
+%\makeatother
+
+
+
+
+
+
+
+
+
+\interfootnotelinepenalty=5000
+
+
+
+\usepackage{wrapfig}
+
+\newlength{\defbaselineskip} % w celu uniknięcia formatowania względnego
+\setlength{\defbaselineskip}{\baselineskip}
+\newenvironment{adres}%
+           {\setlength{\baselineskip}{.8\defbaselineskip}}{}
+\newenvironment{adrescc}%
+           {\setlength{\baselineskip}{.2\defbaselineskip}}{}           
+
+% Komenda pozwala zmieniać interlinię w dokumencie
+
+
+%\usepackage{lipsum}
+
+
+
+\usepackage[shortcuts]{extdash} %hyphens
+
+
+
+
+
+
+
+
+
+
+
+%--------------------------------------------
+
+\begin{document}
+
+%\includepdf[pages=1]{images/tyt.pdf}
+%\newpage
+%\cleardoublepage
+%\includepdf[pages=2]{images/tyt.pdf}
+
+%\newpage
+%\includepdf[pages=1]{images/CT4.pdf}
+
+
+\input{pierwsza.tex}
+\clearpage
+
+\input{czwarta_eng.tex}
+\clearpage
+
+%\input{toctest.tex}
+%
+%\clearpage
+
+%Spis tresci -------------------------------------------------
+
+{\thispagestyle{plain} \tableofcontents \clearpage}
+%-------------------------------------------------------------
+\newpage
+\thispagestyle{plain}
+\cleardoublepage
+\thispagestyle{plain}
+
+%-------------------------------------------------------------
+
+
+
+
+
+
+%\input{default.tex}
+
+
+
+
+
+%\sekcja{Od Redakcji}{Editorial}
+
+%\input{EDI/editorial-PU.tex}
+
+
+
+\sekcja{Artytkuły}{Articles}
+
+%\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+%\input{ART_Majid/Majid.tex} 
+%\renewcommand{\theequation}{\arabic{equation}}
+
+
+%\input{ART_Wysocki/wysocki.tex} %AC
+%\input{ART_Polak/polak.tex} %+-
+%\input{ART_Zaluski/zaluski.tex}
+
+
+\input{ART_dajka/dajka-PU.tex}
+%\input{ZYC_heller/heller.tex}
+
+
+%\addtocontents{toc}{\protect\pagebreak}
+
+
+
+%\sekcja{Z prac Komisji Filozofii Nauk PAU}{Proceedings of the PAU Commission\\\ on the Philosophy of Science}
+%
+%\input{grygiel/grygiel.tex}
+%
+%\input{oramus/oramus.tex}
+
+
+
+%\addtocontents{toc}{\protect\pagebreak}
+
+
+%\sekcja{Sprawozdania}{Reports}
+%\input{REP_Gradzka/gradzka.tex}
+
+
+
+
+%\sekcja{Artykuły recenzyjne}{Review articles}
+
+
+%polskie
+%\input{REV_Gradzka/gradzka.tex}
+%\input{REV_Mscislawski/mscislaw.tex}
+%\input{REV_Krzanowski/krzanowski.tex} %AC
+
+
+
+%angielski
+%\input{REV_Szybka/szybka.tex}
+%\input{REV_Polak/polak.tex} %+-
+%\input{REV_Piechowicz/piechowicz.tex} %AC
+%\input{REV_Cygan/cygan.tex} %AC
+%\input{REV_Borek/borek.tex}
+
+
+%\input{REV_heller_maczka/heller_maczka.tex}
+
+
+
+
+
+
+%\clearpage
+%\thispagestyle{plain}
+%\input{Autorzy.tex}
+%\thispagestyle{plain}
+%\input{Stopka.tex}
+%\thispagestyle{plain}
+
+\end{document}
