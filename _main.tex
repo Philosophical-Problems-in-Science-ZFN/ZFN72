@@ -872,9 +872,9 @@ twoside,top=25mm,bottom=20mm,left=23mm,right=23mm,headheight=14pt}
 %}
 \renewcommand\tableofcontents{%
 	\begin{flushright}%
-	{\bigtitle\color{black!70}{Zagadnienia\\Filozoficzne\\w Nauce\par}}%
+	{\bigtitle\color{black!70}{Philosophical\\Problems\\in Science\par}}%
 	\vskip0.35in%
-	{\chaptitleeng\color{black!70}{Philosophical Problems in Science\par}}%
+	{\chaptitleeng\color{black!70}{Zagadnienia Filozoficzne w~Nauce\par}}%
 	\vskip0.25in%
 	\hrule%
 	\medskip%
@@ -977,21 +977,17 @@ backend=biber]{biblatex}
 
 
 
-%\addbibresource{ART_Gorazda/gorazda.bib}
-%\addbibresource{ART_Polak/polak.bib}
-%\addbibresource{ART_Wysocki/wysocki.bib}
+\addbibresource{ART_dajka/dajka.bib}
+\addbibresource{ART_block/block.bib}
 \addbibresource{ART_rodzen/rodzen.bib}
-%\addbibresource{REP_Gradzka/gradzka.bib}
-%\addbibresource{REV_Borek/borek.bib}
-%\addbibresource{REV_Cygan/cygan.bib}
-%\addbibresource{REV_Gradzka/gradzka.bib}
-%\addbibresource{REV_Mscislawski/mscislaw.bib}
+\addbibresource{ZYC_grygiel/grygiel.bib}
+\addbibresource{ZYC_heller/heller.bib}
+\addbibresource{ART_milkowski/milkowski.bib}
 \addbibresource{REV_kus/kus.bib}
 \addbibresource{REV_krzanowski/krzanowski.bib}
 \addbibresource{REV_gradzka/gradzka.bib}
-\addbibresource{ZYC_heller/heller.bib}
 \addbibresource{REV_heller_maczka/heller_maczka.bib}
-\addbibresource{ART_dajka/dajka3.bib}
+
 
 
 \renewcommand*{\nameyeardelim}{\addcomma\space}
@@ -1222,7 +1218,7 @@ backend=biber]{biblatex}
 
 
 
-
+\addto\captionspolish{\renewcommand{\figurename}{Ilustracja}}
 
 %--------------------------------------------
 
@@ -1275,67 +1271,47 @@ backend=biber]{biblatex}
 
 
 
-\sekcja{Artytkuły}{Articles}
+\sekcja{Articles}{Artytkuły}
 
 %\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
 %\input{ART_Majid/Majid.tex} 
 %\renewcommand{\theequation}{\arabic{equation}}
 
 
-%\input{ART_Wysocki/wysocki.tex} %AC
-%\input{ART_Polak/polak.tex} %+-
 
 
 
-
+\input{ART_dajka/dajka.tex}
+\input{ART_block/block.tex}
 \input{ART_rodzen/rodzen.tex}
-%\input{ART_dajka/dajka-PU.tex}
-%\input{ZYC_heller/heller.tex}
+\input{ZYC_grygiel/grygiel.tex}
+\input{ZYC_heller/heller.tex}
+\input{ART_milkowski/milkowski.tex}
 
 
-%\addtocontents{toc}{\protect\pagebreak}
-
-
-
-%\sekcja{Z prac Komisji Filozofii Nauk PAU}{Proceedings of the PAU Commission\\\ on the Philosophy of Science}
-%
+%\sekcja{Proceedings of the PAU Commission\\\ on the Philosophy of Science}{Z prac Komisji Filozofii Nauk PAU}
 %\input{grygiel/grygiel.tex}
-%
 %\input{oramus/oramus.tex}
 
-
-
 %\addtocontents{toc}{\protect\pagebreak}
 
-
-%\sekcja{Sprawozdania}{Reports}
+%\sekcja{Reports}{Sprawozdania}
 %\input{REP_Gradzka/gradzka.tex}
 
 
 
 
-\sekcja{Artykuły recenzyjne}{Review articles}
-
-
-%polskie
-
-%\input{REV_Mscislawski/mscislaw.tex}
- %AC
+\sekcja{Review articles}{Artykuły recenzyjne}
 
 
 
-%angielski
-%\input{REV_Szybka/szybka.tex}
-%\input{REV_Polak/polak.tex} %+-
-%\input{REV_Piechowicz/piechowicz.tex} %AC
-%\input{REV_Cygan/cygan.tex} %AC
-%\input{REV_Borek/borek.tex}
+\input{REV_kus/kus.tex}
+\input{REV_krzanowski/krzanowski.tex}
+\input{REV_gradzka/gradzka.tex}
+\input{REV_heller_maczka/heller_maczka.tex}
 
 
-%\input{REV_heller_maczka/heller_maczka.tex}
-%\input{REV_gradzka/gradzka.tex}
-%\input{REV_krzanowski/krzanowski.tex}
-%\input{REV_kus/kus.tex}
+
 
 
 
