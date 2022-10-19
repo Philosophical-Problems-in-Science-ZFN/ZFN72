@@ -942,11 +942,14 @@ twoside,top=25mm,bottom=20mm,left=23mm,right=23mm,headheight=14pt}
 
 %---------------bibliografia-------------------------
 
-\usepackage[style=bath,
+\usepackage[%
+style=bath,
 citestyle=authoryear-comp,
+sorting=nyt,
+%bibstyle=numeric,
 uniquename=false,
 dateabbrev=false,
-sortcites=false,
+%sortcites=false,
 useprefix=false,
 maxbibnames=4,
 %autolang=other,
@@ -974,6 +977,12 @@ backend=biber]{biblatex}
 %  \ifnamesequal{author}{bookauthor}
 %    {\usebibmacro{cite:idem}}
 %    {\printnames{bookauthor}}}
+
+
+%\renewbibmacro*{in:}{%
+%  \setunit{\addcomma\space}%
+%  \printtext{%
+%    \bibstring{in}\intitlepunct}}
 
 
 
@@ -1019,6 +1028,7 @@ backend=biber]{biblatex}
 	urlfrom = {Available at:},% w oryginale Available from: moim zdaniem ok
 	series = {},%
 	online = {Online},%
+%	in = {[in\addcolon]},%
 	unpublished = {[unpublished]}
 }
 
@@ -1271,7 +1281,7 @@ backend=biber]{biblatex}
 
 
 
-\sekcja{Articles}{Artytkuły}
+\sekcja{Articles}{Artykuły}
 
 %\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
 %\input{ART_Majid/Majid.tex} 
@@ -1284,6 +1294,9 @@ backend=biber]{biblatex}
 \input{ART_dajka/dajka.tex}
 \input{ART_block/block.tex}
 \input{ART_rodzen/rodzen.tex}
+
+\addtocontents{toc}{\protect\pagebreak}
+
 \input{ZYC_grygiel/grygiel.tex}
 \input{ZYC_heller/heller.tex}
 \input{ART_milkowski/milkowski.tex}
@@ -1293,7 +1306,7 @@ backend=biber]{biblatex}
 %\input{grygiel/grygiel.tex}
 %\input{oramus/oramus.tex}
 
-%\addtocontents{toc}{\protect\pagebreak}
+
 
 %\sekcja{Reports}{Sprawozdania}
 %\input{REP_Gradzka/gradzka.tex}
