@@ -952,6 +952,7 @@ dateabbrev=false,
 %sortcites=false,
 useprefix=false,
 maxbibnames=4,
+doi=true,
 %autolang=other,
 backend=biber]{biblatex}
 %uwaga ustew biber jako program do biliografii lub" pdflatex -> biber -> pdflatex -> pdflatex
@@ -1046,6 +1047,26 @@ backend=biber]{biblatex}
        \printfield[pujournaltits]{journalsubtitle}}}}
        
 \DeclareFieldFormat{pujournaltits}{#1}
+
+
+% print url if no doi
+\renewbibmacro*{doi+eprint+url}{%
+    \printfield{doi}%
+    \newunit\newblock%
+    \iftoggle{bbx:eprint}{%
+        \usebibmacro{eprint}%
+    }{}%
+    \newunit\newblock%
+    \iffieldundef{doi}{%
+        \usebibmacro{url+urldate}}%
+        {}%
+    }
+
+%\newcommand*{\doi}[1]{\href{http://dx.doi.org/#1}{doi: #1}}
+%\DeclareFieldFormat{doi}{DOI\addcolon\space\url[#1]{https://doi.org/#1}}
+%\DeclareFieldFormat{doi}{\url{https://doi.org/#1}}
+\DeclareFieldFormat{doi}{\url{https://doi.org/#1}{#1}}
+
 
 
 %-- online no-date without "n.d."
